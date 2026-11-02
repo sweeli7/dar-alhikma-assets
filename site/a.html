@@ -17,7 +17,7 @@
 </style></head><body><div id="pg">
 <style>
 .hero{position:relative;height:640px;overflow:hidden}
-.hero .bg{position:absolute;inset:0;background:url(https://cdn.jsdelivr.net/gh/sweeli7/dar-alhikma-assets@3579635fb6f94f4fa3c99654e0cc1be3398c4efc/assets/bg_lobby.avif) center 38%/cover;transform:scale(1.04)}
+.hero .bg{position:absolute;inset:0;background:url(https://cdn.jsdelivr.net/gh/sweeli7/dar-alhikma-assets@ea30cf855963908cc292f636bf60fa17e0c6acf9/assets/bg_lobby.avif) center 38%/cover;transform:scale(1.04)}
 .hero .shade{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(20,14,9,.25),rgba(20,14,9,.86) 75%),linear-gradient(0deg,rgba(20,14,9,.9),transparent 40%)}
 .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .title{margin:0;font:400 150px/1.05 Lalezar;color:var(--goldhi);-webkit-text-stroke:5px var(--ink);paint-order:stroke fill;text-shadow:0 9px 0 rgba(20,14,9,.7)}
@@ -44,7 +44,7 @@
 </section>
 </div><iframe id="app" allow="fullscreen; autoplay" allowfullscreen></iframe>
 <script>
-var APP_HTML=null, appUrl='https://cdn.jsdelivr.net/gh/sweeli7/dar-alhikma-assets@6b92e6e6ce205ab58c42373b2a2795bf5902cffe/app.html', fr=document.getElementById('app');
+var APP_HTML=null, appUrl='https://cdn.jsdelivr.net/gh/sweeli7/dar-alhikma-assets@ea30cf855963908cc292f636bf60fa17e0c6acf9/app.html', fr=document.getElementById('app');
 fetch(appUrl).then(function(r){return r.text()}).then(function(t){APP_HTML=t});
 function load(){ if(APP_HTML){fr.srcdoc=APP_HTML} else { fr.srcdoc='<body style="margin:0;background:#241a12;color:#f1e3c4;display:grid;place-items:center;height:100vh;font:600 22px Tahoma">جارٍ فتح المتحف…</body>'; var w=setInterval(function(){ if(APP_HTML){clearInterval(w);fr.srcdoc=APP_HTML} },300); } }
 document.getElementById('go').onclick=function(){

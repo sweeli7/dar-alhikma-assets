@@ -47,7 +47,15 @@
 var APP_HTML=null, appUrl='https://cdn.jsdelivr.net/gh/sweeli7/dar-alhikma-assets@ea30cf855963908cc292f636bf60fa17e0c6acf9/app.html', fr=document.getElementById('app');
 fetch(appUrl).then(function(r){return r.text()}).then(function(t){APP_HTML=t});
 function load(){ if(APP_HTML){fr.srcdoc=APP_HTML} else { fr.srcdoc='<body style="margin:0;background:#241a12;color:#f1e3c4;display:grid;place-items:center;height:100vh;font:600 22px Tahoma">جارٍ فتح المتحف…</body>'; var w=setInterval(function(){ if(APP_HTML){clearInterval(w);fr.srcdoc=APP_HTML} },300); } }
+var FSJS='<scr'+'ipt>(function(){function f(){var d=document.documentElement,r=d.requestFullscreen||d.webkitRequestFullscreen;if(!document.fullscreenElement&&r)try{var p=r.call(d);if(p&&p.catch)p.catch(function(){})}catch(e){}}document.addEventListener("pointerdown",f,true);document.addEventListener("keydown",f,true);})();</scr'+'ipt>';
+function put(w){ var u=URL.createObjectURL(new Blob([APP_HTML.replace(/<head>/i,'<head>'+FSJS)],{type:'text/html;charset=utf-8'})); try{ w.location.replace(u); }catch(e){ w.location.href=u; } }
 document.getElementById('go').onclick=function(){
+  var w=null; try{ w=window.open('','_blank'); }catch(e){}
+  if(w){
+    try{ w.document.write('<title>دار الحكمة</title><body style="margin:0;background:#241a12;color:#f1e3c4;display:grid;place-items:center;height:100vh;font:600 22px Tahoma">جارٍ فتح المتحف…</body>'); }catch(e){}
+    if(APP_HTML) put(w); else { var t=setInterval(function(){ if(APP_HTML){clearInterval(t);put(w)} },300); }
+    return;
+  }
   fr.style.display='block';
   var fs=fr.requestFullscreen||fr.webkitRequestFullscreen;
   try{ var p=fs&&fs.call(fr); if(p&&p.catch)p.catch(function(){}); }catch(e){}
